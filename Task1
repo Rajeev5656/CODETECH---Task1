@@ -1,0 +1,54 @@
+/*C Code to convert temperature for Fahrenheit to celsius or kelvin or vice versa*/
+
+#include <stdio.h>
+
+int main() {
+    float temp;
+    char from, to;
+
+    printf("Enter temperature: ");
+    scanf("%f", &temp);
+
+    printf("Enter from (C, F, K): ");
+    scanf(" %c", &from);
+
+    printf("Enter to (C, F, K): ");
+    scanf(" %c", &to);
+
+    switch (from) {
+        case 'C':
+            switch (to) {
+                case 'F':
+                    temp = (temp * 9/5) + 32;
+                    break;
+                case 'K':
+                    temp += 273.15;
+                    break;
+            }
+            break;
+        case 'F':
+            switch (to) {
+                case 'C':
+                    temp = (temp - 32) * 5/9;
+                    break;
+                case 'K':
+                    temp = (temp - 32) * 5/9 + 273.15;
+                    break;
+            }
+            break;
+        case 'K':
+            switch (to) {
+                case 'C':
+                    temp -= 273.15;
+                    break;
+                case 'F':
+                    temp = (temp - 273.15) * 9/5 + 32;
+                    break;
+            }
+            break;
+    }
+
+    printf("%.2f %c is equal to %.2f %c\n", temp, to, temp, to);
+
+    return 0;
+}
